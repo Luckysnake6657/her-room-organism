@@ -1,0 +1,27 @@
+# P0 confirm run (seeds 0-23) used this version:
+
+e6e65be4c97e638b7383637c26fd114dde8a52a9129a9a48e20b55e8e93cccd5  params.py
+7d72920fb787c58f4569d554724b2e79d53dd3b1887e45429e8d8288a5fb9d54  model.py
+e843fda2017326463ec110fda02b448d98610239ad2d8ff63b95b8913aeb4065  policy.py
+
+# After P0b refactor (coeffs in params, per-edge switches, renderer granularity):
+
+132b49917c59cdf1f1927e18c6a6481acfc93648f3b7a387e3bab6a464eb5536  params.py
+debc160147764ea1e04894236b005a97a8dabab99e7caee0154f65786e80cb62  model.py
+539d99dc6183c71bf0f198484acb84853ba4e2b571ce020834299dddadc94873  policy.py
+c10c0a53c592048371bf6d8e6f869dbcabf27a87253c51c61d33932056ac1b02  sim.py
+0ba177365bd40f2f544f3438e8b3cb8fa46e2c3dcf62066a8e17f6a320fa36cc  render.py
+5326030dbba6ff17aefa2f4bf96524c96d1cd585c7eee64c30b7e55254325809  render_texts.py
+aa2f4f602889a2509e884301909a8379a78446bddf4da49a9648f64a004abd85  run_p0.py
+cf27cf130fdcd6a6732902f4251e0c3734d952f3217133927f34e0063b8b6ff8  analyze_p0.py
+a8fafd918541f64511dae0e334a239dcb1ee1a90635a080b320f7ac76cfa07c5  run_p0b.py
+2903930c30082359e34d2d582f1cebd0c352f7e4d848cfb552b1fb6caad138e8  analyze_p0b.py
+1ce1cad3a18f0518b38c6992752dab947be4a0b813fcaa8f16954ebab264aadd  test_invariants.py
+4dee36cf4fe03012e23e5164a651f45dec507be55eba3b414497fd86d4f84a83  variability.py
+441f8aa48e641237924a5663747a29fe1c6ee24aff0e77a29bd8b5dd96464aad  blind_packet.py
+
+# Behavior identity checks (simulation, not text):
+# - 10 runs (5 seeds x normal/challenge) bitwise identical before/after refactor
+# - base_c vs P0 baseline_c: 24/24 seeds bitwise identical
+# - lesion_immune normal/challenge: 6/6 runs bitwise identical
+# Text rendering changed intentionally (finer timing words); statistics unaffected.
