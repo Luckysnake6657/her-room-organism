@@ -57,6 +57,15 @@ python -m organism.service --port 3210 # 给桥接提供 /context /proactive
 桥接补丁与运维脚本在 `deploy/`；默认只对单个 owner 生效，失败回退。
 **不含** her-room / NapCat；与它们配合时受其非商用条款约束。
 
+### 推之前先扫描
+
+```bash
+python deploy/privacy_scan.py .          # 命中 QQ 号/本机路径/名字/密钥即返回 1
+.\deploy\install-privacy-hook.ps1        # 可选：装成 pre-push，命中就阻止推送
+```
+
+`evidence/`、`state/`、`config.local.json` 已在 `.gitignore` 里，不要提交。
+
 ## 配置与开关
 
 | 项 | 作用 |

@@ -5,7 +5,7 @@ import path from 'node:path';
 import zlib from 'node:zlib';
 
 const ROOTS = [(process.env.QQ_DSH_SESSIONS || 'sessions'), (process.env.DSH_SESSIONS || '.dsh/sessions')];
-const OUT = 'D:\\deepseekharness\\lab\\dc\\evidence\\p3\\cmw_messages';
+const OUT = 'evidence/p3/cmw_messages';
 
 function walk(dir, acc = []) {
   let ents; try { ents = fs.readdirSync(dir, { withFileTypes: true }); } catch { return acc; }

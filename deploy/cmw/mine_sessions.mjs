@@ -5,7 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
 
-const OUT = process.argv[2] || 'D:\\deepseekharness\\lab\\dc\\evidence\\p3\\cmw_sessions';
+const OUT = process.argv[2] || 'evidence/p3/cmw_sessions';
 const ROOTS = [
   (process.env.QQ_DSH_SESSIONS || 'sessions'),
   (process.env.DSH_SESSIONS || '.dsh/sessions'),
