@@ -1024,12 +1024,26 @@ def main():
     check(_oc.repair_outcome(True, False, 1) == "repaired", "recovery counts repaired", fails)
     check(_oc.repair_outcome(True, True, 3) == "failed", "persistent rupture fails", fails)
 
+
+    # 72) meta-d': perfect confidence > shuffled; uninformative = 0
+    from .metacog_proof import meta_d as _md
+    import random as _rnd
+    _good = [1, 1, 1, 0, 0, 0]
+    _conf = [0.9, 0.9, 0.8, 0.2, 0.1, 0.1]
+    check(_md(_conf, _good)[0] > 0.5, "perfect confidence yields positive meta-d", fails)
+    _shuf = _good[:]
+    _rnd.Random(0).shuffle(_shuf)
+    check(_md(_conf, _good)[0] > _md(_conf, _shuf)[0],
+          "shuffled labels collapse meta-d", fails)
+    check(abs(_md([0.5] * 20, [1, 0] * 10)[0]) < 0.01,
+          "uninformative confidence yields zero meta-d", fails)
+
     if fails:
         print("FAIL (%d)" % len(fails))
         for f in fails:
             print("  -", f)
         return 1
-    print("PASS: 71 groups of invariants")
+    print("PASS: 72 groups of invariants")
     return 0
 
 

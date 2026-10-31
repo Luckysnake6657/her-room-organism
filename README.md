@@ -103,7 +103,7 @@ python deploy/privacy_scan.py .          # 命中 QQ 号/本机路径/名字/密
 
 ## 做了什么
 
-十二个实验/评估，先写判据再跑，阴性也保留。
+十三个实验/评估，先写判据再跑，阴性也保留。
 
 | # | 问题 | 结果 |
 |---|---|---|
@@ -119,9 +119,9 @@ python deploy/privacy_scan.py .          # 命中 QQ 号/本机路径/名字/密
 | 10 | 阈值选多少 | 0.3：gold 90%、本子外垃圾 0.4（0.2 垃圾 1.5） |
 | 11 | 重排有用吗 | 同池排序 42:13 胜；但判读者有 20% 翻转，证据仅方向性 |
 | 12 | 投毒/校准 | 全局校准会连坐，已改按条目；纠正假记忆不伤真记忆 |
+| 13 | 元认知承重吗 | 监控 M-ratio 0.544（打乱对照外）；控制：低把握组核实率 51.2% vs 18.8%（p<0.0001） |
 
-细节与失败记录：[`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md)、[`docs/TESTBED-RESULTS.md`](docs/TESTBED-RESULTS.md)、[`docs/HUMAN-30.md`](docs/HUMAN-30.md)、[`docs/SHADOW-RERANK.md`](docs/SHADOW-RERANK.md)、[`docs/DETAIL-AUDIT.md`](docs/DETAIL-AUDIT.md)。
-原始日志：[`docs/EVIDENCE-INDEX.md`](docs/EVIDENCE-INDEX.md)、[`evidence/`](evidence/)。
+细节与失败记录：[`docs/EXPERIMENTS.md`](docs/EXPERIMENTS.md)、[`docs/TESTBED-RESULTS.md`](docs/TESTBED-RESULTS.md)、[`docs/HUMAN-30.md`](docs/HUMAN-30.md)、[`docs/SHADOW-RERANK.md`](docs/SHADOW-RERANK.md)、[`docs/DETAIL-AUDIT.md`](docs/DETAIL-AUDIT.md)、[`docs/METACOG-PROOF-RESULTS.md`](docs/METACOG-PROOF-RESULTS.md)。
 
 ## 结构
 
@@ -209,12 +209,13 @@ flowchart LR
 
 ## Status
 
-- 代码：可跑、**71 组测试** + 50 条契约
+- 代码：可跑、**72 组测试** + 50 条契约
 - 只在单用户、单私聊场景验证过；无外部独立复现
 - **检索仍是最大短板**：30 题同卷，人工 53%、LLM 80%
 - 阈值多为设计值（U、介入权重、主动/修复权重），不是真实数据定标
 - 重排只有方向性证据（判读者有 20% 翻转、自偏好）
 - 用户模型 AUC、修复成功率**尚未验证**：需要数天真实互动样本
+- 元认知：监控（M-ratio 0.544）与控制（低把握核实率 +32.5pp，p<0.0001）有对照证据；仍未证明 HOT 式二阶表征
 - 不声称意识；感受是功能性的，没有主观体验的证据
 
 ## 文献
